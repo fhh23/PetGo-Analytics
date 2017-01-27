@@ -20,6 +20,12 @@ package fh.flink
 
 import org.apache.flink.api.scala._
 
+import java.util.Properties
+
+import org.apache.flink.streaming.util.serialization.SimpleStringSchema
+import org.apache.flink.streaming.api.scala.StreamExecutionEnvironment
+import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09
+
 /**
  * Implements the "WordCount" program that computes a simple word occurrence histogram
  * over some sample data
@@ -36,10 +42,19 @@ object WordCount {
     // set up the execution environment
     val env = ExecutionEnvironment.getExecutionEnvironment
 
+	val kafkaProps = new Properties()
+    kafkaProps.setProperty("bootstrap.servers", "ec2-35-161-228-158.us-west-2.compute.amazonaws.com:9092")
+    kafkaProps.setProperty("zookeeper.connect", "ec2-35-161-228-158.us-west-2.compute.amazonaws.com:2181")
+    kafkaProps.setProperty("group.id", "flink")
+	
+	val kafkaConsumer = new FlinkKafkaConsumer09[String](
+      my-topic,
+      new SimpleStringSchema(),
+      kafkaProps
+    )
+	
     // get input data
-    val text = env.fromElements("To be, or not to be,--that is the question:--",
-      "Whether 'tis nobler in the mind to suffer", "The slings and arrows of outrageous fortune",
-      "Or to take arms against a sea of troubles,")
+    val text = env.addSource(kafkaConsumer)
 
     val counts = text.flatMap { _.toLowerCase.split("\\W+") }
       .map { (_, 1) }

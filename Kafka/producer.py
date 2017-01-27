@@ -21,16 +21,18 @@ def get_s3_bucket(bucket_name):
 	else:
 		return s3.Bucket(bucket_name)
 
-cluster = kafka.KafkaClient("35.166.234.119:9092")
-#producer = KafkaProducer(bootstrap_servers='localhost:9092')
-producer = kafka.SimpleProducer(cluster)
+#cluster = kafka.KafkaClient("35.166.31.140:9092")
+#producer = kafka.KafkaProducer(bootstrap_servers='localhost:9092')
+#producer = kafka.SimpleProducer(cluster)
+
+producer = kafka.KafkaProducer(bootstrap_servers='35.166.31.140:9092')
 
 bucket_name = 'fh-data-insight'
 bucket = get_s3_bucket(bucket_name)
 for obj in bucket.objects.limit(1):
 	obj_body = obj.get()['Body']
 	json_body = obj_body.read()
-	producer.send_messages('my-topic', json_body)
+	producer.send('fh-topic', json_body)
 	time.sleep(5)
 	print json_body
 

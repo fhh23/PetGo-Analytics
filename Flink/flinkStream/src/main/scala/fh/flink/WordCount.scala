@@ -15,21 +15,19 @@ object WordCount {
     val env = StreamExecutionEnvironment.getExecutionEnvironment
 
         val kafkaProps = new Properties()
-    kafkaProps.setProperty("bootstrap.servers", "ec2-35-161-228-158.us-west-2.compute.amazonaws.com:9092")
-    kafkaProps.setProperty("zookeeper.connect", "ec2-35-161-228-158.us-west-2.compute.amazonaws.com:2181")
+    kafkaProps.setProperty("bootstrap.servers", "ec2-35-166-31-140.us-west-2.compute.amazonaws.com:9092")
+    kafkaProps.setProperty("zookeeper.connect", "ec2-35-166-31-140.us-west-2.compute.amazonaws.com:2181")
     kafkaProps.setProperty("group.id", "org.apache.flink")
 
     // get input data
     val text = env
                 .addSource(new FlinkKafkaConsumer09[String](
-      "my-topic",
+      "fh-topic",
       new SimpleStringSchema(),
       kafkaProps
-    )).print
-
-    val counts = text.flatMap { _.toLowerCase.split("\\W+") }
-      .map { (_, 1) }
-      .groupBy(0)
+    )).flatMap { _.toLowerCase.split("\\W+") }
+      .map ( (_, 1) )
+      .keyBy(0)
       .sum(1)
 
     // execute and print result

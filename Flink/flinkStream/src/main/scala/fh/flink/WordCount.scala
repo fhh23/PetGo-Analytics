@@ -25,15 +25,11 @@ object WordCount {
       "my-topic",
       new SimpleStringSchema(),
       kafkaProps
-    )).print
-
-    val counts = text.flatMap { _.toLowerCase.split("\\W+") }
-      .map { (_, 1) }
-      .groupBy(0)
+    )).flatMap ( _.toLowerCase.split("\\W+")) 
+      .map ( (_, 1)) 
+      .keyBy(0)
       .sum(1)
-
-    // execute and print result
-    counts.print()
+      .print()
 
   }
 }

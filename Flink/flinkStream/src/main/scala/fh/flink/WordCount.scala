@@ -19,7 +19,7 @@ object WordCount {
     kafkaProps.setProperty("group.id", "org.apache.flink")
 
     val text = env.addSource(new FlinkKafkaConsumer09[String](
-		"fh-topic2",
+		"fh-topic",
 		new SimpleStringSchema(),
 		kafkaProps))
 		.print

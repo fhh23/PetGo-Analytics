@@ -32,7 +32,7 @@ bucket = get_s3_bucket(bucket_name)
 for obj in bucket.objects.limit(1):
 	obj_body = obj.get()['Body']
 	json_body = obj_body.read()
-	producer.send('fh-topic', json_body)
+	producer.send('fh-topic2', json_body)
 	time.sleep(5)
 	print json_body
 

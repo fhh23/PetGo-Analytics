@@ -11,27 +11,20 @@ import org.apache.flink.streaming.connectors.kafka.FlinkKafkaConsumer09
 object WordCount {
   def main(args: Array[String]) {
 
-    // set up the execution environment
     val env = StreamExecutionEnvironment.getExecutionEnvironment
-
-        val kafkaProps = new Properties()
+    val kafkaProps = new Properties()
+	
     kafkaProps.setProperty("bootstrap.servers", "ec2-35-166-31-140.us-west-2.compute.amazonaws.com:9092")
     kafkaProps.setProperty("zookeeper.connect", "ec2-35-166-31-140.us-west-2.compute.amazonaws.com:2181")
     kafkaProps.setProperty("group.id", "org.apache.flink")
 
-    // get input data
-    val text = env
-                .addSource(new FlinkKafkaConsumer09[String](
-      "fh-topic",
-      new SimpleStringSchema(),
-      kafkaProps
-    )).flatMap { _.toLowerCase.split("\\W+") }
-      .map ( (_, 1) )
-      .keyBy(0)
-      .sum(1)
+    val text = env.addSource(new FlinkKafkaConsumer09[String](
+		"fh-topic",
+		new SimpleStringSchema(),
+		kafkaProps))
+		.print
 
-    // execute and print result
-    counts.print()
+    env.execute("KafkaFlinkConsumer")
 
   }
 }

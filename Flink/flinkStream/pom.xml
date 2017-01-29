@@ -1,21 +1,3 @@
-<!--
-Licensed to the Apache Software Foundation (ASF) under one
-or more contributor license agreements.  See the NOTICE file
-distributed with this work for additional information
-regarding copyright ownership.  The ASF licenses this file
-to you under the Apache License, Version 2.0 (the
-"License"); you may not use this file except in compliance
-with the License.  You may obtain a copy of the License at
-
-  http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing,
-software distributed under the License is distributed on an
-"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-KIND, either express or implied.  See the License for the
-specific language governing permissions and limitations
-under the License.
--->
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -26,9 +8,16 @@ under the License.
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>Flink Quickstart Job</name>
-	<url>http://www.myorganization.org</url>
-
+	 <properties>
+        <scala.version>2.10.4</scala.version>
+        <scala.binary.version>2.10</scala.binary.version>
+        <hadoop.version>2.7.2</hadoop.version>
+        <kafka.version>0.9.0.1</kafka.version>
+        <flink.version>1.1.4</flink.version>
+        <redis.version>3.2</redis.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+	
 	<repositories>
 		<repository>
 			<id>apache.snapshots</id>
@@ -43,120 +32,47 @@ under the License.
 		</repository>
 	</repositories>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<flink.version>1.1.4</flink.version>
-	</properties>
-
-	<!-- 
-		
-		Execute "mvn clean package -Pbuild-jar"
-		to build a jar file out of this project!
-
-		How to use the Flink Quickstart pom:
-
-		a) Adding new dependencies:
-			You can add dependencies to the list below.
-			Please check if the maven-shade-plugin below is filtering out your dependency
-			and remove the exclude from there.
-
-		b) Build a jar for running on the cluster:
-			There are two options for creating a jar from this project
-
-			b.1) "mvn clean package" -> this will create a fat jar which contains all
-					dependencies necessary for running the jar created by this pom in a cluster.
-					The "maven-shade-plugin" excludes everything that is provided on a running Flink cluster.
-
-			b.2) "mvn clean package -Pbuild-jar" -> This will also create a fat-jar, but with much
-					nicer dependency exclusion handling. This approach is preferred and leads to
-					much cleaner jar files.
-	-->
-
 	<dependencies>
-		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-scala_2.10</artifactId>
-			<version>${flink.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-streaming-scala_2.10</artifactId>
-			<version>${flink.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.flink</groupId>
-			<artifactId>flink-clients_2.10</artifactId>
-			<version>${flink.version}</version>
-		</dependency>
-		<dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.kafka</groupId>
+            <artifactId>kafka-clients</artifactId>
+            <version>${kafka.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-scala_2.10</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-scala_2.10</artifactId>
+            <version>${flink.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-kafka-0.9_2.10</artifactId>
             <version>${flink.version}</version>
+        </dependency>        
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-connector-redis_2.10</artifactId>
+            <version>${flink.version}</version>
         </dependency>
-	</dependencies>
+    </dependencies>
 
-	<profiles>
-		<profile>
-			<!-- Profile for packaging correct JAR files -->
-			<id>build-jar</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<dependencies>
-				<dependency>
-					<groupId>org.apache.flink</groupId>
-					<artifactId>flink-scala_2.10</artifactId>
-					<version>${flink.version}</version>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.flink</groupId>
-					<artifactId>flink-streaming-scala_2.10</artifactId>
-					<version>${flink.version}</version>
-					<scope>provided</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.flink</groupId>
-					<artifactId>flink-clients_2.10</artifactId>
-					<version>${flink.version}</version>
-					<scope>provided</scope>
-				</dependency>
-			</dependencies>
-
-			<build>
-				<plugins>
-					<!-- disable the exclusion rules -->
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-shade-plugin</artifactId>
-						<version>2.4.1</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>shade</goal>
-								</goals>
-								<configuration>
-									<artifactSet>
-										<excludes combine.self="override"></excludes>
-									</artifactSet>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
-
-	<!-- We use the maven-assembly plugin to create a fat jar that contains all dependencies
-		except flink and its transitive dependencies. The resulting fat-jar can be executed
-		on a cluster. Change the value of Program-Class if your program entry point changes. -->
 	<build>
 		<plugins>
-			<!-- We use the maven-shade plugin to create a fat jar that contains all dependencies
-			except flink and it's transitive dependencies. The resulting fat-jar can be executed
-			on a cluster. Change the value of Program-Class if your program entry point changes. -->
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-shade-plugin</artifactId>
@@ -247,8 +163,6 @@ under the License.
 									</excludes>
 								</filter>
 								<filter>
-									<!-- Do not copy the signatures in the META-INF folder.
-									Otherwise, this might cause SecurityExceptions when using the JAR. -->
 									<artifact>*:*</artifact>
 									<excludes>
 										<exclude>META-INF/*.SF</exclude>
@@ -257,15 +171,6 @@ under the License.
 									</excludes>
 								</filter>
 							</filters>
-							<!-- If you want to use ./bin/flink run <quickstart jar> uncomment the following lines.
-							This will add a Main-Class entry to the manifest file -->
-							<!--
-							<transformers>
-								<transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>fh.flink.StreamingJob</mainClass>
-								</transformer>
-							</transformers>
-						    -->
 							<createDependencyReducedPom>false</createDependencyReducedPom>
 						</configuration>
 					</execution>
@@ -293,37 +198,6 @@ under the License.
 						</goals>
 					</execution>
 				</executions>
-			</plugin>
-
-			<!-- Eclipse Integration -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-eclipse-plugin</artifactId>
-				<version>2.8</version>
-				<configuration>
-					<downloadSources>true</downloadSources>
-					<projectnatures>
-						<projectnature>org.scala-ide.sdt.core.scalanature</projectnature>
-						<projectnature>org.eclipse.jdt.core.javanature</projectnature>
-					</projectnatures>
-					<buildcommands>
-						<buildcommand>org.scala-ide.sdt.core.scalabuilder</buildcommand>
-					</buildcommands>
-					<classpathContainers>
-						<classpathContainer>org.scala-ide.sdt.launching.SCALA_CONTAINER
-						</classpathContainer>
-						<classpathContainer>org.eclipse.jdt.launching.JRE_CONTAINER
-						</classpathContainer>
-					</classpathContainers>
-					<excludes>
-						<exclude>org.scala-lang:scala-library</exclude>
-						<exclude>org.scala-lang:scala-compiler</exclude>
-					</excludes>
-					<sourceIncludes>
-						<sourceInclude>**/*.scala</sourceInclude>
-						<sourceInclude>**/*.java</sourceInclude>
-					</sourceIncludes>
-				</configuration>
 			</plugin>
 
 			<!-- Adding scala source directories to build path -->

@@ -28,13 +28,14 @@ def get_s3_bucket(bucket_name):
 producer = kafka.KafkaProducer(bootstrap_servers='35.166.31.140:9092')
 
 bucket_name = 'fh-data-insight'
-bucket = get_s3_bucket(bucket_name)
-for obj in bucket.objects.limit(1):
-	obj_body = obj.get()['Body']
-	json_body = obj_body.read()
-	producer.send('fh-topic', json_body)
-	time.sleep(5)
-	print json_body
+while True:
+	bucket = get_s3_bucket(bucket_name)
+	for obj in bucket.objects.limit(1):
+		obj_body = obj.get()['Body']
+		json_body = obj_body.read()
+		producer.send('fh-topic', json_body)
+		time.sleep(5)
+		print json_body
 
 
 # #jsonFile = open("sample.json", 'r')

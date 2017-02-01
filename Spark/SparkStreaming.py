@@ -27,9 +27,14 @@ broker_file.close()
 kafkaBrokers = {"metadata.broker.list": "ec2-35-166-31-140.us-west-2.compute.amazonaws.com:9092"}
 
 # Create input stream that pull messages from Kafka Brokers (DStream object)
-tweets_raw = KafkaUtils.createDirectStream(ssc, [topic], kafkaBrokers)
+trans = KafkaUtils.createDirectStream(ssc, [topic], kafkaBrokers)
+
+counts = trans.flatMap(lambda line: line.split(",")[-4]) \
+        .map(lambda word: (word, 1)) \
+        .reduceByKey(lambda a, b: a+b)
+		
 # Printing kafkastream content 
-tweets_raw.pprint()
+counts.pprint()
 
 ssc.start()
 ssc.awaitTermination()

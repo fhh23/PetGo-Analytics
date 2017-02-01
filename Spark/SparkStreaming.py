@@ -6,9 +6,15 @@ import os
 import pyspark
 from pyspark.streaming import StreamingContext
 from pyspark.streaming.kafka import KafkaUtils
+from tdigest import TDigest
 import pprint
-
 from pyspark import SparkContext, SparkConf
+
+def digest_partitions(values):
+    digest = TDigest()
+    digest.batch_update(values)
+    return [digest]
+
 sc = SparkContext(appName='streamingFromKafka')
 ssc = StreamingContext(sc, 2)
 # Set the Kafka topic

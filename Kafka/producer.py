@@ -3,7 +3,6 @@ import json
 import boto3
 import time
 
-#s3_client.download_file('MyBucket', 'hello-remote.txt', 'hello2.txt')
 def get_s3_bucket(bucket_name):
 	s3 = boto3.resource('s3')
 	try:

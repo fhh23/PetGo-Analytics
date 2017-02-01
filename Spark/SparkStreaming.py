@@ -15,8 +15,14 @@ def digest_partitions(values):
     digest.batch_update(values)
     return [digest]
 
+def lineSplit(lines):
+    if (lines):
+        word = lines.split(",")[-4]
+        return word
+    return "none" 
+
 sc = SparkContext(appName='streamingFromKafka')
-ssc = StreamingContext(sc, 2)
+ssc = StreamingContext(sc, 5)
 # Set the Kafka topic
 topic = 'fh-topic'
 
@@ -28,13 +34,14 @@ kafkaBrokers = {"metadata.broker.list": "ec2-35-166-31-140.us-west-2.compute.ama
 
 # Create input stream that pull messages from Kafka Brokers (DStream object)
 trans = KafkaUtils.createDirectStream(ssc, [topic], kafkaBrokers)
-
-counts = trans.flatMap(lambda line: line.split(",")[-4]) \
-        .map(lambda word: (word, 1)) \
-        .reduceByKey(lambda a, b: a+b)
+body = trans.map(lambda x: x[1])#.foreachRDD(lambda RDD: print(RDD.collect()))
+lines = body.flatMap(lambda bodys: bodys.split("\r\n"))#.foreachRDD(lambda RDD: print(RDD.collect())) 
+word = lines.map(lineSplit) \
+            .map(lambda word: (word, 1)) \
+            .reduceByKey(lambda a, b: a+b).foreachRDD(lambda RDD: print(RDD.collect()))
 		
 # Printing kafkastream content 
-counts.pprint()
+#counts.pprint()
 
 ssc.start()
 ssc.awaitTermination()

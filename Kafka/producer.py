@@ -29,7 +29,7 @@ producer = kafka.KafkaProducer(bootstrap_servers='35.166.31.140:9092')
 bucket_name = 'fh-data-insight'
 while True:
 	bucket = get_s3_bucket(bucket_name)
-	for obj in bucket.objects.limit(1):
+	for obj in bucket.objects.all():
 		obj_body = obj.get()['Body']
 		json_body = obj_body.read()
 		producer.send('fh-topic', json_body)

@@ -1,5 +1,3 @@
-#!/usr/bin/env pyspark
-
 from __future__ import print_function
 
 import os
@@ -9,20 +7,38 @@ from pyspark.streaming.kafka import KafkaUtils
 from tdigest import TDigest
 import pprint
 from pyspark import SparkContext, SparkConf
+from operator import add
+
+percentile_broadcast = None
 
 def digest_partitions(values):
     digest = TDigest()
     digest.batch_update(values)
-    return [digest]
+    return [digest] 
+
+def compute_percentile(rdd):
+    global percentile_broadcast
+    percentile_limit = rdd.map(lambda row: int(row[1])) \
+                          .mapPartitions(digest_partitions) \
+                          .reduce(add) \
+                          .percentile(50)
+    percentile_broadcast = rdd.context.broadcast(percentile_limit)
+
+def filter_most_popular(rdd):
+    global percentile_broadcast
+    if percentile_broadcast:
+        return rdd.filter(lambda row: row[1] > percentile_broadcast.value)
+    return rdd.context.parallelize([])
+
 
 def lineSplit(lines):
     if (lines):
-        word = lines.split(",")[-4]
+        word = lines.split(",")[0]
         return word
     return "none" 
 
 sc = SparkContext(appName='streamingFromKafka')
-ssc = StreamingContext(sc, 5)
+ssc = StreamingContext(sc, 15)
 # Set the Kafka topic
 topic = 'fh-topic'
 
@@ -38,8 +54,21 @@ body = trans.map(lambda x: x[1])#.foreachRDD(lambda RDD: print(RDD.collect()))
 lines = body.flatMap(lambda bodys: bodys.split("\r\n"))#.foreachRDD(lambda RDD: print(RDD.collect())) 
 word = lines.map(lineSplit) \
             .map(lambda word: (word, 1)) \
-            .reduceByKey(lambda a, b: a+b).foreachRDD(lambda RDD: print(RDD.collect()))
-		
+            .reduceByKey(lambda a, b: a+b)
+            #.map(lambda x:x[1]) 
+print_word = word.pprint()
+print("RDD filtered: \n") 
+word.foreachRDD(compute_percentile)
+filter_digest = word.transform(filter_most_popular).foreachRDD(lambda RDD: print(RDD.collect()))
+
+
+#f = open('digest.txt', 'a')
+#print(" OKOKOK ", file=f)
+#print(digest.percentile(50), file=f)
+#print("\n", file=f)
+#f.close()
+
+#filter_word = word.filter(lambda x: x <= digest.percentile(50)).foreachRDD(lambda RDD: print(RDD.collect()))
 # Printing kafkastream content 
 #counts.pprint()
 

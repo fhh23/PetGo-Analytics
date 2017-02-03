@@ -30,13 +30,6 @@ def filter_most_popular(rdd):
         return rdd.filter(lambda row: row[1] > percentile_broadcast.value)
     return rdd.context.parallelize([])
 
-
-def lineSplit(lines):
-    if (lines):
-        word = lines.split(",")[0]
-        return word
-    return "none" 
-
 sc = SparkContext(appName='streamingFromKafka')
 ssc = StreamingContext(sc, 15)
 # Set the Kafka topic
@@ -60,7 +53,7 @@ print_word = word.pprint()
 print("RDD filtered: \n") 
 word.foreachRDD(compute_percentile)
 filter_digest = word.transform(filter_most_popular).foreachRDD(lambda RDD: print(RDD.collect()))
-
+findFrequentItemsets(lines)
 
 #f = open('digest.txt', 'a')
 #print(" OKOKOK ", file=f)

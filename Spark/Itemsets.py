@@ -6,6 +6,12 @@ from string import atoi
 from pyspark import SparkContext, SparkConf
 import apriori
 
+def lineSplit(lines):
+    if (lines):
+        word = lines.split(",")[0]
+        return word
+    return "none" 
+	
 #======================================Apriori algo===================================================
 def get_frequent_items_sets(transactions,min_support,steps=0):
 	frequent_itemsets = []
@@ -35,7 +41,7 @@ def findFrequentItemsets(data):
     count = data.count()
     threshold = s*count
     #split string baskets into lists of items
-    baskets = data.map(lambda line: sorted([int(y) for y in line.strip().split(' ')]))
+    baskets = data.map(lambda line: sorted([int(y) for y in linesplit]))
     #treat a basket as a set for fast check if candidate belongs
     basketSets = baskets.map(set).persist()
     #each worker calculates the itemsets of his partition

@@ -1,3 +1,0 @@
-language: java
-# to make sure travis doesn't try to use maven due to pom.xml file
-script: gradle check

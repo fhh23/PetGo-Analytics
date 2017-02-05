@@ -8,6 +8,7 @@ from tdigest import TDigest
 import pprint
 from pyspark import SparkContext, SparkConf
 from operator import add
+import Itemsets
 
 percentile_broadcast = None
 
@@ -45,7 +46,7 @@ kafkaBrokers = {"metadata.broker.list": "ec2-35-166-31-140.us-west-2.compute.ama
 trans = KafkaUtils.createDirectStream(ssc, [topic], kafkaBrokers)
 body = trans.map(lambda x: x[1])#.foreachRDD(lambda RDD: print(RDD.collect()))
 lines = body.flatMap(lambda bodys: bodys.split("\r\n"))#.foreachRDD(lambda RDD: print(RDD.collect())) 
-word = lines.map(lineSplit) \
+word = lines.map(Itemsets.lineSplit) \
             .map(lambda word: (word, 1)) \
             .reduceByKey(lambda a, b: a+b)
             #.map(lambda x:x[1]) 
@@ -53,7 +54,7 @@ print_word = word.pprint()
 print("RDD filtered: \n") 
 word.foreachRDD(compute_percentile)
 filter_digest = word.transform(filter_most_popular).foreachRDD(lambda RDD: print(RDD.collect()))
-findFrequentItemsets(lines)
+Itemsets.findFrequentItemsets(lines)
 
 #f = open('digest.txt', 'a')
 #print(" OKOKOK ", file=f)

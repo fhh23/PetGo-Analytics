@@ -1,139 +1,87 @@
+frozenset([5]) --> frozenset([2]) conf: 1.0
+frozenset([2]) --> frozenset([5]) conf: 0.75
+frozenset([6]) --> frozenset([5]) conf: 0.75
+frozenset([5]) --> frozenset([6]) conf: 1.0
+frozenset([6]) --> frozenset([1]) conf: 0.75
+frozenset([1]) --> frozenset([6]) conf: 1.0
+frozenset([6]) --> frozenset([4]) conf: 0.75
+frozenset([4]) --> frozenset([6]) conf: 1.0
+frozenset([3]) --> frozenset([2]) conf: 1.0
+frozenset([2]) --> frozenset([3]) conf: 0.75
+frozenset([6]) --> frozenset([2]) conf: 1.0
+frozenset([2]) --> frozenset([6]) conf: 1.0
+frozenset([2]) --> frozenset([1]) conf: 0.75
+frozenset([1]) --> frozenset([2]) conf: 1.0
+frozenset([6]) --> frozenset([3]) conf: 0.75
+frozenset([3]) --> frozenset([6]) conf: 1.0
+frozenset([4]) --> frozenset([2]) conf: 1.0
+frozenset([2]) --> frozenset([4]) conf: 0.75
+freqSet: frozenset([1, 2, 6])
+frozenset([2, 6]) --> frozenset([1]) conf: 0.75
+frozenset([1, 6]) --> frozenset([2]) conf: 1.0
+frozenset([1, 2]) --> frozenset([6]) conf: 1.0
+m: 1 Hmp1 now: [frozenset([1]), frozenset([2]), frozenset([6])]
+Hmp1: [frozenset([1, 2]), frozenset([1, 6]), frozenset([2, 6])]
+frozenset([6]) --> frozenset([1, 2]) conf: 0.75
+frozenset([2]) --> frozenset([1, 6]) conf: 0.75
+frozenset([1]) --> frozenset([2, 6]) conf: 1.0
+Hmp1 after calculate: [frozenset([1, 2]), frozenset([1, 6]), frozenset([2, 6])]
+freqSet: frozenset([1, 2, 6])
+frozenset([6]) --> frozenset([1, 2]) conf: 0.75
+frozenset([2]) --> frozenset([1, 6]) conf: 0.75
+frozenset([1]) --> frozenset([2, 6]) conf: 1.0
+m: 2 Hmp1 now: [frozenset([1, 2]), frozenset([1, 6]), frozenset([2, 6])]
+freqSet: frozenset([2, 4, 6])
+frozenset([4, 6]) --> frozenset([2]) conf: 1.0
+frozenset([2, 6]) --> frozenset([4]) conf: 0.75
+frozenset([2, 4]) --> frozenset([6]) conf: 1.0
+m: 1 Hmp1 now: [frozenset([2]), frozenset([4]), frozenset([6])]
+Hmp1: [frozenset([2, 4]), frozenset([2, 6]), frozenset([4, 6])]
+frozenset([6]) --> frozenset([2, 4]) conf: 0.75
+frozenset([4]) --> frozenset([2, 6]) conf: 1.0
+frozenset([2]) --> frozenset([4, 6]) conf: 0.75
+Hmp1 after calculate: [frozenset([2, 4]), frozenset([2, 6]), frozenset([4, 6])]
+freqSet: frozenset([2, 4, 6])
+frozenset([6]) --> frozenset([2, 4]) conf: 0.75
+frozenset([4]) --> frozenset([2, 6]) conf: 1.0
+frozenset([2]) --> frozenset([4, 6]) conf: 0.75
+m: 2 Hmp1 now: [frozenset([2, 4]), frozenset([2, 6]), frozenset([4, 6])]
+freqSet: frozenset([2, 5, 6])
+frozenset([5, 6]) --> frozenset([2]) conf: 1.0
+frozenset([2, 6]) --> frozenset([5]) conf: 0.75
+frozenset([2, 5]) --> frozenset([6]) conf: 1.0
+m: 1 Hmp1 now: [frozenset([2]), frozenset([5]), frozenset([6])]
+Hmp1: [frozenset([2, 5]), frozenset([2, 6]), frozenset([5, 6])]
+frozenset([6]) --> frozenset([2, 5]) conf: 0.75
+frozenset([5]) --> frozenset([2, 6]) conf: 1.0
+frozenset([2]) --> frozenset([5, 6]) conf: 0.75
+Hmp1 after calculate: [frozenset([2, 5]), frozenset([2, 6]), frozenset([5, 6])]
+freqSet: frozenset([2, 5, 6])
+frozenset([6]) --> frozenset([2, 5]) conf: 0.75
+frozenset([5]) --> frozenset([2, 6]) conf: 1.0
+frozenset([2]) --> frozenset([5, 6]) conf: 0.75
+m: 2 Hmp1 now: [frozenset([2, 5]), frozenset([2, 6]), frozenset([5, 6])]
+freqSet: frozenset([2, 3, 6])
+frozenset([3, 6]) --> frozenset([2]) conf: 1.0
+frozenset([2, 6]) --> frozenset([3]) conf: 0.75
+frozenset([2, 3]) --> frozenset([6]) conf: 1.0
+m: 1 Hmp1 now: [frozenset([2]), frozenset([3]), frozenset([6])]
+Hmp1: [frozenset([2, 3]), frozenset([2, 6]), frozenset([3, 6])]
+frozenset([6]) --> frozenset([2, 3]) conf: 0.75
+frozenset([3]) --> frozenset([2, 6]) conf: 1.0
+frozenset([2]) --> frozenset([3, 6]) conf: 0.75
+Hmp1 after calculate: [frozenset([2, 3]), frozenset([2, 6]), frozenset([3, 6])]
+freqSet: frozenset([2, 3, 6])
+frozenset([6]) --> frozenset([2, 3]) conf: 0.75
+frozenset([3]) --> frozenset([2, 6]) conf: 1.0
+frozenset([2]) --> frozenset([3, 6]) conf: 0.75
+m: 2 Hmp1 now: [frozenset([2, 3]), frozenset([2, 6]), frozenset([3, 6])]
+brl: [(frozenset([5]), frozenset([2]), 1.0), (frozenset([2]), frozenset([5]), 0.75), (frozenset([6]), frozenset([5]), 0.75), (frozenset([5]), frozenset([6]), 1.0), (frozenset([6]), frozenset([1]), 0.75), (frozenset([1]), frozenset([6]), 1.0), (frozenset([6]), frozenset([4]), 0.75), (frozenset([4]), frozenset([6]), 1.0), (frozenset([3]), frozenset([2]), 1.0), (frozenset([2]), frozenset([3]), 0.75), (frozenset([6]), frozenset([2]), 1.0), (frozenset([2]), frozenset([6]), 1.0), (frozenset([2]), frozenset([1]), 0.75), (frozenset([1]), frozenset([2]), 1.0), (frozenset([6]), frozenset([3]), 0.75), (frozenset([3]), frozenset([6]), 1.0), (frozenset([4]), frozenset([2]), 1.0), (frozenset([2]), frozenset([4]), 0.75), (frozenset([2, 6]), frozenset([1]), 0.75), (frozenset([1, 6]), frozenset([2]), 1.0), (frozenset([1, 2]), frozenset([6]), 1.0), (frozenset([6]), frozenset([1, 2]), 0.75), (frozenset([2]), frozenset([1, 6]), 0.75), (frozenset([1]), frozenset([2, 6]), 1.0), (frozenset([6]), frozenset([1, 2]), 0.75), (frozenset([2]), frozenset([1, 6]), 0.75), (frozenset([1]), frozenset([2, 6]), 1.0), (frozenset([4, 6]), frozenset([2]), 1.0), (frozenset([2, 6]), frozenset([4]), 0.75), (frozenset([2, 4]), frozenset([6]), 1.0), (frozenset([6]), frozenset([2, 4]), 0.75), (frozenset([4]), frozenset([2, 6]), 1.0), (frozenset([2]), frozenset([4, 6]), 0.75), (frozenset([6]), frozenset([2, 4]), 0.75), (frozenset([4]), frozenset([2, 6]), 1.0), (frozenset([2]), frozenset([4, 6]), 0.75), (frozenset([5, 6]), frozenset([2]), 1.0), (frozenset([2, 6]), frozenset([5]), 0.75), (frozenset([2, 5]), frozenset([6]), 1.0), (frozenset([6]), frozenset([2, 5]), 0.75), (frozenset([5]), frozenset([2, 6]), 1.0), (frozenset([2]), frozenset([5, 6]), 0.75), (frozenset([6]), frozenset([2, 5]), 0.75), (frozenset([5]), frozenset([2, 6]), 1.0), (frozenset([2]), frozenset([5, 6]), 0.75), (frozenset([3, 6]), frozenset([2]), 1.0), (frozenset([2, 6]), frozenset([3]), 0.75), (frozenset([2, 3]), frozenset([6]), 1.0), (frozenset([6]), frozenset([2, 3]), 0.75), (frozenset([3]), frozenset([2, 6]), 1.0), (frozenset([2]), frozenset([3, 6]), 0.75), (frozenset([6]), frozenset([2, 3]), 0.75), (frozenset([3]), frozenset([2, 6]), 1.0), (frozenset([2]), frozenset([3, 6]), 0.75)]
 RDD filtered: 
 
--------------------------------------------
-Time: 2017-02-02 23:30:00
--------------------------------------------
-(u'1', 1197)
-(u'0', 3090)
-(u'3', 359)
-(u'2', 678)
-(u'5', 52)
-(u'4', 124)
-(u'7', 3)
-(u'6', 20)
-(u'8', 2)
-
-[]
--------------------------------------------
-Time: 2017-02-02 23:30:15
--------------------------------------------
-(u'1', 3591)
-(u'0', 9270)
-(u'3', 1077)
-(u'2', 2034)
-(u'5', 156)
-(u'4', 372)
-(u'7', 9)
-(u'6', 60)
-(u'8', 6)
-
-[]
--------------------------------------------
-Time: 2017-02-02 23:30:30
--------------------------------------------
-(u'1', 3591)
-(u'0', 9270)
-(u'3', 1077)
-(u'2', 2034)
-(u'5', 156)
-(u'4', 372)
-(u'7', 9)
-(u'6', 60)
-(u'8', 6)
-
-[(u'1', 3591), (u'0', 9270), (u'3', 1077), (u'2', 2034)]
--------------------------------------------
-Time: 2017-02-02 23:30:45
--------------------------------------------
-(u'1', 3591)
-(u'0', 9270)
-(u'3', 1077)
-(u'2', 2034)
-(u'5', 156)
-(u'4', 372)
-(u'7', 9)
-(u'6', 60)
-(u'8', 6)
-
-[(u'1', 3591), (u'0', 9270), (u'3', 1077), (u'2', 2034)]
--------------------------------------------
-Time: 2017-02-02 23:31:00
--------------------------------------------
-(u'1', 3591)
-(u'0', 9270)
-(u'3', 1077)
-(u'2', 2034)
-(u'5', 156)
-(u'4', 372)
-(u'7', 9)
-(u'6', 60)
-(u'8', 6)
-
-[(u'1', 3591), (u'0', 9270), (u'3', 1077), (u'2', 2034)]
--------------------------------------------
-Time: 2017-02-02 23:31:15
--------------------------------------------
-(u'1', 2394)
-(u'0', 6180)
-(u'3', 718)
-(u'2', 1356)
-(u'5', 104)
-(u'4', 248)
-(u'7', 6)
-(u'6', 40)
-(u'8', 4)
-
-[(u'1', 2394), (u'0', 6180), (u'3', 718), (u'2', 1356)]
--------------------------------------------
-Time: 2017-02-02 23:31:30
--------------------------------------------
-(u'1', 3591)
-(u'0', 9270)
-(u'3', 1077)
-(u'2', 2034)
-(u'5', 156)
-(u'4', 372)
-(u'7', 9)
-(u'6', 60)
-(u'8', 6)
-
-[(u'1', 3591), (u'0', 9270), (u'3', 1077), (u'2', 2034), (u'4', 372)]
--------------------------------------------
-Time: 2017-02-02 23:31:45
--------------------------------------------
-(u'1', 3591)
-(u'0', 9270)
-(u'3', 1077)
-(u'2', 2034)
-(u'5', 156)
-(u'4', 372)
-(u'7', 9)
-(u'6', 60)
-(u'8', 6)
-
-[(u'1', 3591), (u'0', 9270), (u'3', 1077), (u'2', 2034)]
--------------------------------------------
-Time: 2017-02-02 23:32:00
--------------------------------------------
-(u'1', 3591)
-(u'0', 9270)
-(u'3', 1077)
-(u'2', 2034)
-(u'5', 156)
-(u'4', 372)
-(u'7', 9)
-(u'6', 60)
-(u'8', 6)
-
-[(u'1', 3591), (u'0', 9270), (u'3', 1077), (u'2', 2034)]
 Traceback (most recent call last):
-  File "/home/ubuntu/Amazon-Go-Recommendation-System-Using-Distributed-Graph-Processing/Spark/SparkStreaming.py", line 76, in <module>
-    ssc.awaitTermination()
-  File "/usr/local/spark/python/lib/pyspark.zip/pyspark/streaming/context.py", line 206, in awaitTermination
-  File "/usr/local/spark/python/lib/py4j-0.10.4-src.zip/py4j/java_gateway.py", line 1131, in __call__
-  File "/usr/local/spark/python/lib/py4j-0.10.4-src.zip/py4j/java_gateway.py", line 883, in send_command
-  File "/usr/local/spark/python/lib/py4j-0.10.4-src.zip/py4j/java_gateway.py", line 1028, in send_command
-  File "/usr/lib/python2.7/socket.py", line 447, in readline
-    data = self._sock.recv(self._rbufsize)
-  File "/usr/local/spark/python/lib/pyspark.zip/pyspark/context.py", line 236, in signal_handler
-KeyboardInterrupt
+  File "/home/ubuntu/Amazon-Go-Recommendation-System-Using-Distributed-Graph-Processing/Spark/SparkStreaming.py", line 57, in <module>
+    Itemsets.findFrequentItemsets(lines)
+  File "/home/ubuntu/Amazon-Go-Recommendation-System-Using-Distributed-Graph-Processing/Spark/Itemsets.py", line 66, in findFrequentItemsets
+    candidates = sc.broadcast(mergedCandidates)
+NameError: global name 'sc' is not defined

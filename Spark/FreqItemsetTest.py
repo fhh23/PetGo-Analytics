@@ -73,13 +73,10 @@ if __name__ == "__main__":
 
     sc  = SparkContext(conf=conf)
 
-    f_input = sys.argv[1]
-    f_output = sys.argv[2]
-    threshold = float(sys.argv[3])
+    f_input = "FreqItemsetTest.txt"
+    f_output = "freq.txt"
+    threshold = .3
 
-    if len(sys.argv) > 4:
-        numPartitions = int(sys.argv[4])
-    else:
-        numPartitions = None
+    numPartitions = None
 
     findFrequentItemsets(f_input, f_output, numPartitions, threshold, sc)

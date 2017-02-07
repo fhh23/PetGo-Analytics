@@ -56,7 +56,7 @@ def get_frequent_items_sets(data,min_sup,steps=0):
 
 	# Generalize the steps it ends when there are no candidates
 	# or if the user provided as input the number of parameters
-	k = 2
+	k = 0
 	solution[k-1] = L_set
 	while L_set != set([]) and k != steps+1:
 		L_set = create_candidates(L_set,k)

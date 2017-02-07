@@ -1,0 +1,4 @@
+  File "/home/ubuntu/Amazon-Go-Recommendation-System-Using-Distributed-Graph-Processing/Spark/Batch/SparkBatch.py", line 30
+    bucket_path = "s3n://fh-data-insight/"
+              ^
+SyntaxError: invalid syntax

@@ -13,13 +13,7 @@ def lineSplit2(lines):
         w1 = word[0]
         w2 = word[4]
         word = (w2, w1)
-        #word2 = lines.split(",")[4]
-        #tups = zip(word, word2)
-        #print ("HI HI \n")
-        #print(tups.type)
-#        print(word)
         return word
-        #return tups
     return "none"
 
 

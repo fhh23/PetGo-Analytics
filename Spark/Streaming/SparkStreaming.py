@@ -13,8 +13,20 @@ from itertools import imap, combinations
 import sys
 import copy
 from string import atoi
+import redis
 
 percentile_broadcast = None
+
+def redisWr(obj):
+    # define function to put kv pair in redis
+    redis_server = 'ec2-35-166-31-140.us-west-2.compute.amazonaws.com'
+    r = redis.StrictRedis(host=redis_server, port=6379, db=0)
+    print("\n HI \n")
+    print(obj[0])
+    print("\n")
+    print(obj[1])
+    r.set(obj[0], obj[1])
+    return "none"
 
 def lineSplit2(lines):
     if (lines):
@@ -161,9 +173,10 @@ body = trans.map(lambda x: x[1])
 lines = body.flatMap(lambda bodys: bodys.split("\r\n")) 
 word = lines.map(lineSplit) \
             .map(lambda word: (word, 1)) \
-            .reduceByKey(lambda a, b: a+b)
+            .reduceByKey(lambda a, b: a+b).cache()
             #.map(lambda x:x[1]) 
-print_word = word.pprint()
+#print_word = word.pprint()
+word.foreachRDD(lambda rdd: rdd.foreach(redisWr))
 print("RDD filtered: \n") 
 word.foreachRDD(compute_percentile)
 #filter_digest = word.transform(filter_most_popular).pprint()#foreachRDD(lambda RDD: print(RDD.collect()))

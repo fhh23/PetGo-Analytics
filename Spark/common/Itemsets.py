@@ -5,7 +5,6 @@ import sys
 import copy
 from string import atoi
 from pyspark import SparkContext, SparkConf
-import apriori
 
 def lineSplit2(lines):
     if (lines):

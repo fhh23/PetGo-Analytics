@@ -42,8 +42,8 @@ def get_frequent_items_sets(data,min_sup,steps=0):
     for line in data:
         transaction = set(line)
         transactions.append(transaction)
-    for element in transaction:
-        items[element]+=1
+        for element in transaction:
+            items[element]+=1
 
     # Add to the solution all frequent items
     for item, count in items.iteritems():
@@ -110,15 +110,27 @@ def please_clean(solution):
 
 
 def rethinkWr(obj):
+    conn = r.connect(host='localhost', port=28015, db='test')
     for x in obj:
-        print("\n")
-        print(x)
-        #print(x[1]) 
-        #print(x[0])
-        #r.table('itemsets').insert
+        count = x[1] 
+        objSet = x[0]
+        setSize = len(objSet)
+        #r.table('itemsets').index_create('length').run(conn)
+        for y in objSet:
+            if r.table('itemsets').get(y).run(conn) is None:
+                r.table('itemsets').insert({
+                                "id": y,
+                                "length": [setSize],
+                                "count" : [count],
+                                "set" : [objSet],
+                                }).run(conn)
+            else:
+                r.table('itemsets').get(y).update({'length': r.row['length'].append(setSize)}).run(conn)
+                r.table('itemsets').get(y).update({'count': r.row['count'].append(count)}).run(conn)
+                r.table('itemsets').get(y).update({'set': r.row['set'].append(objSet)}).run(conn)
     return ""
 
-
+  
 sc = SparkContext(appName='ItemsetsBatch')
 
 # Read in from S3
@@ -129,10 +141,10 @@ conn = boto.connect_s3(aws_access_key, aws_secret_access_key)
 bucket = conn.get_bucket('fh-data-insight')
 #data = sc.testFile("s3n://fh-data-insight/*")
 #print(data.take(5)
-
+#conn = r.connect(host='localhost', port=28015, db='test')
+#r.table('itemsets').index_create('length').run(conn)
+#conn.close()
 bucket_path = "s3n://fh-data-insight/"
-#only run once then comment out
-#r.db('test').tableCreate('itemsets')
 for f in bucket:
     data = sc.textFile(bucket_path + f.name)
     #print(data.take(5))
@@ -169,8 +181,11 @@ for f in bucket:
     counts = basketSets.flatMap(lambda line: [(candidate,1) for candidate in candidates.value if line.issuperset(candidate)])
     #filter finalists
 
-    finalItemSets = counts.reduceByKey(lambda v1, v2: v1+v2).filter(lambda (i,v): v>=threshold)
+    finalItemSets = counts.reduceByKey(lambda v1, v2: v1+v2).filter(lambda (i,v): v>=threshold).filter(lambda (i,v): len(i) > 1)
     #put into nice format
     #finalItemSets = finalItemSets.map(lambda (itemset, count): ", ".join([str(x) for x in itemset])+"\t("+str(count)+")")
     print(finalItemSets.collect())#saveAsTextFile("spark_out.txt")
     #finalItemSets.foreachPartition(rethinkWr)
+conn = r.connect(host='localhost', port=28015, db='test')
+r.table('itemsets')['count'].order_by(index=r.desc('length')).run(conn)
+conn.close()

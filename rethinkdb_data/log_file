@@ -1,0 +1,51 @@
+2017-02-11T00:53:40.154932759 0.079406s notice: Recursively removing directory /home/ubuntu/PetGo-Analytics/rethinkdb_data/tmp
+2017-02-11T00:53:40.159533115 0.084005s notice: Initializing directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-11T00:53:40.159653866 0.084124s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/home/ubuntu/PetGo-Analytics/rethinkdb_data' did not already exist or is empty.)
+2017-02-11T00:53:40.159679075 0.084149s notice: Running rethinkdb 2.3.5~0trusty (GCC 4.8.2)...
+2017-02-11T00:53:40.161647702 0.086119s notice: Running on Linux 3.13.0-48-generic x86_64
+2017-02-11T00:53:40.161741083 0.086211s notice: Loading data from directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-11T00:53:40.248463108 0.172934s info: Automatically using cache size of 1111 MB
+2017-02-11T00:53:40.250103215 0.174574s notice: Listening for intracluster connections on port 29015
+2017-02-11T00:53:40.251105688 0.175576s notice: Listening for client driver connections on port 28015
+2017-02-11T00:53:40.251329724 0.175800s notice: Listening for administrative HTTP connections on port 8081
+2017-02-11T00:53:40.252215227 0.176686s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T00:53:40.253001102 0.177471s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T00:53:40.253782329 0.178253s notice: Listening on http addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T00:53:40.253863639 0.178334s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
+2017-02-11T02:16:04.009597501 4943.934068s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-02-11T02:16:04.009797315 4943.934268s notice: Shutting down client connections...
+2017-02-11T02:16:04.009924693 4943.934395s notice: All client connections closed.
+2017-02-11T02:16:04.010009302 4943.934479s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-02-11T02:16:04.010271945 4943.934742s notice: Storage engine shut down.
+2017-02-11T02:16:05.485693145 0.078563s notice: Running rethinkdb 2.3.5~0trusty (GCC 4.8.2)...
+2017-02-11T02:16:05.487721511 0.080590s notice: Running on Linux 3.13.0-48-generic x86_64
+2017-02-11T02:16:05.487813152 0.080681s notice: Loading data from directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-11T02:16:05.603596223 0.196465s info: Automatically using cache size of 1108 MB
+2017-02-11T02:16:05.605050150 0.197918s notice: Listening for intracluster connections on port 29015
+2017-02-11T02:16:05.606079193 0.198947s notice: Listening for client driver connections on port 28015
+2017-02-11T02:16:05.606357731 0.199225s notice: Listening for administrative HTTP connections on port 8081
+2017-02-11T02:16:05.607063173 0.199931s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T02:16:05.607801571 0.200669s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T02:16:05.608518157 0.201386s notice: Listening on http addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T02:16:05.608591994 0.201459s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
+2017-02-11T02:17:51.146949803 105.739818s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-02-11T02:17:51.147128160 105.739996s notice: Shutting down client connections...
+2017-02-11T02:17:51.147253548 105.740121s notice: All client connections closed.
+2017-02-11T02:17:51.147337166 105.740205s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-02-11T02:17:51.147601562 105.740469s notice: Storage engine shut down.
+2017-02-11T02:18:07.635224540 0.063251s notice: Running rethinkdb 2.3.5~0trusty (GCC 4.8.2)...
+2017-02-11T02:18:07.637349814 0.065375s notice: Running on Linux 3.13.0-48-generic x86_64
+2017-02-11T02:18:07.637454639 0.065479s notice: Loading data from directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-11T02:18:07.674412847 0.102438s info: Automatically using cache size of 1108 MB
+2017-02-11T02:18:07.676122654 0.104147s notice: Listening for intracluster connections on port 29015
+2017-02-11T02:18:07.677255690 0.105280s notice: Listening for client driver connections on port 28015
+2017-02-11T02:18:07.677537323 0.105561s notice: Listening for administrative HTTP connections on port 8081
+2017-02-11T02:18:07.678442629 0.106467s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T02:18:07.679619686 0.107644s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T02:18:07.680385135 0.108409s notice: Listening on http addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T02:18:07.680459788 0.108484s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
+2017-02-11T02:29:03.273777734 655.701802s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-02-11T02:29:03.273989614 655.702014s notice: Shutting down client connections...
+2017-02-11T02:29:03.274119546 655.702143s notice: All client connections closed.
+2017-02-11T02:29:03.274200517 655.702224s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-02-11T02:29:03.274470084 655.702494s notice: Storage engine shut down.

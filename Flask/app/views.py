@@ -14,7 +14,12 @@ def index(chartID = 'chart_ID', chart_type = 'bar', chart_height = 350):
         count = red.get(key)
 	keys.append(key)
         counts.append(count)
-    
+    conn = rdb.connect(host='localhost', port=28015, db='test')
+    cursor = rdb.table('itemsets').run(conn)
+    myList = []
+    for document in cursor:
+        myList.append(document)
+        print(document)
     keys = [ 23, 23, 23 ]
     chart = {"renderTo": chartID, "type": chart_type, "height": chart_height,}
     series = [{"name": 'Label1', "data": [1,2,3]}, {"name": 'Label2', "data": [4, 5, 6]}]

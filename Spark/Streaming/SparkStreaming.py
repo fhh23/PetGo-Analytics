@@ -19,12 +19,8 @@ percentile_broadcast = None
 
 def redisWr(obj):
     # define function to put kv pair in redis
-    redis_server = 'ec2-35-166-31-140.us-west-2.compute.amazonaws.com'
+    redis_server = 'ec2-52-11-94-102.us-west-2.compute.amazonaws.com'
     r = redis.StrictRedis(host=redis_server, port=6379, db=0)
-    print("\n HI \n")
-    print(obj[0])
-    print("\n")
-    print(obj[1])
     r.set(obj[0], obj[1])
     return "none"
 
@@ -165,7 +161,7 @@ topic = 'fh-topic'
 #broker_file = open('brokers.txt', 'r')
 #kafka_brokers = broker_file.read()[:-1]
 #broker_file.close()
-kafkaBrokers = {"metadata.broker.list": "ec2-35-166-31-140.us-west-2.compute.amazonaws.com:9092"}
+kafkaBrokers = {"metadata.broker.list": "ec2-52-33-141-253.us-west-2.compute.amazonaws.com:9092"}
 
 # Create input stream that pull messages from Kafka Brokers (DStream object)
 trans = KafkaUtils.createDirectStream(ssc, [topic], kafkaBrokers)

@@ -49,3 +49,73 @@
 2017-02-11T02:29:03.274119546 655.702143s notice: All client connections closed.
 2017-02-11T02:29:03.274200517 655.702224s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
 2017-02-11T02:29:03.274470084 655.702494s notice: Storage engine shut down.
+2017-02-11T03:05:05.088311144 0.105215s notice: Running rethinkdb 2.3.5~0trusty (GCC 4.8.2)...
+2017-02-11T03:05:05.090396795 0.107299s notice: Running on Linux 3.13.0-48-generic x86_64
+2017-02-11T03:05:05.090493130 0.107394s notice: Loading data from directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-11T03:05:05.135262164 0.152164s info: Automatically using cache size of 1103 MB
+2017-02-11T03:05:05.136520435 0.153421s notice: Listening for intracluster connections on port 29015
+2017-02-11T03:05:05.137433548 0.154334s notice: Listening for client driver connections on port 28015
+2017-02-11T03:05:05.137687698 0.154589s notice: Listening for administrative HTTP connections on port 8081
+2017-02-11T03:05:05.138277628 0.155179s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T03:05:05.138954929 0.155856s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T03:05:05.139571019 0.156472s notice: Listening on http addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T03:05:05.139638615 0.156539s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
+2017-02-11T20:25:18.272118161 0.051372s notice: Running rethinkdb 2.3.5~0trusty (GCC 4.8.2)...
+2017-02-11T20:25:18.274167491 0.053419s notice: Running on Linux 3.13.0-48-generic x86_64
+2017-02-11T20:25:18.274255490 0.053506s notice: Loading data from directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-11T20:25:18.317682195 0.096934s info: Automatically using cache size of 1103 MB
+2017-02-11T20:25:18.319220408 0.098471s notice: Listening for intracluster connections on port 29015
+2017-02-11T20:25:18.320273029 0.099524s notice: Listening for client driver connections on port 28015
+2017-02-11T20:25:18.320543533 0.099794s notice: Listening for administrative HTTP connections on port 8081
+2017-02-11T20:25:18.321169624 0.100421s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T20:25:18.321969881 0.101221s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T20:25:18.322746045 0.101997s notice: Listening on http addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T20:25:18.322840066 0.102091s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
+2017-02-11T20:25:19.940620084 1.719871s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-02-11T20:25:19.940918393 1.720169s notice: Shutting down client connections...
+2017-02-11T20:25:19.941040592 1.720291s notice: All client connections closed.
+2017-02-11T20:25:19.941044849 1.720295s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-02-11T20:25:19.941279979 1.720531s notice: Storage engine shut down.
+2017-02-11T20:25:39.100817454 0.030274s notice: Running rethinkdb 2.3.5~0trusty (GCC 4.8.2)...
+2017-02-11T20:25:39.102690775 0.032147s notice: Running on Linux 3.13.0-48-generic x86_64
+2017-02-11T20:25:39.102717447 0.032172s notice: Loading data from directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-11T20:25:39.161825607 0.091281s info: Automatically using cache size of 1103 MB
+2017-02-11T20:25:39.163358602 0.092814s notice: Listening for intracluster connections on port 29015
+2017-02-11T20:25:39.164286481 0.093741s notice: Listening for client driver connections on port 28015
+2017-02-11T20:25:39.164458383 0.093913s notice: Listening for administrative HTTP connections on port 8081
+2017-02-11T20:25:39.165167848 0.094623s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T20:25:39.165845567 0.095301s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T20:25:39.166460093 0.095915s notice: Listening on http addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T20:25:39.166494684 0.095949s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
+2017-02-11T20:26:32.028238611 0.125765s notice: Running rethinkdb 2.3.5~0trusty (GCC 4.8.2)...
+2017-02-11T20:26:32.030185758 0.127711s notice: Running on Linux 3.13.0-48-generic x86_64
+2017-02-11T20:26:32.030213488 0.127738s notice: Loading data from directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-11T20:26:32.060718296 0.158243s info: Automatically using cache size of 1103 MB
+2017-02-11T20:26:32.061912472 0.159437s notice: Listening for intracluster connections on port 29015
+2017-02-11T20:26:32.062753053 0.160277s notice: Listening for client driver connections on port 28015
+2017-02-11T20:26:32.062958765 0.160483s notice: Listening for administrative HTTP connections on port 8081
+2017-02-11T20:26:32.063523118 0.161048s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T20:26:32.064189476 0.161714s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T20:26:32.064767880 0.162292s notice: Listening on http addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-11T20:26:32.064802776 0.162327s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
+2017-02-11T20:44:28.011836435 1076.109361s info: Table 9fdfa518-e78e-4015-9f89-b497c45ba7c4: Starting a new Raft election for term 1.
+2017-02-11T20:44:28.012720215 1076.110245s info: Table 9fdfa518-e78e-4015-9f89-b497c45ba7c4: Added replica on this server.
+2017-02-11T20:44:28.029017311 1076.126542s info: Table 9fdfa518-e78e-4015-9f89-b497c45ba7c4: This server is Raft leader for term 1. Latest log index is 0.
+2017-02-12T02:56:32.740790807 23400.838316s notice: Removing file /home/ubuntu/PetGo-Analytics/rethinkdb_data/9fdfa518-e78e-4015-9f89-b497c45ba7c4
+2017-02-12T02:56:32.740844091 23400.838368s info: Table 9fdfa518-e78e-4015-9f89-b497c45ba7c4: Deleted the table.
+2017-02-12T02:56:37.034337364 23405.131862s info: Table 87ac5329-5db8-4f0d-9e19-aa94ebd204c0: Added replica on this server.
+2017-02-12T02:56:37.034378058 23405.131902s info: Table 87ac5329-5db8-4f0d-9e19-aa94ebd204c0: Starting a new Raft election for term 1.
+2017-02-12T02:56:37.040163423 23405.137688s info: Table 87ac5329-5db8-4f0d-9e19-aa94ebd204c0: This server is Raft leader for term 1. Latest log index is 0.
+2017-02-12T03:00:46.482774733 0.035359s notice: Running rethinkdb 2.3.5~0trusty (GCC 4.8.2)...
+2017-02-12T03:00:46.484911861 0.037495s notice: Running on Linux 3.13.0-48-generic x86_64
+2017-02-12T03:00:46.485004764 0.037587s notice: Loading data from directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-12T03:00:46.510401799 0.062985s info: Automatically using cache size of 1100 MB
+2017-02-12T03:00:46.511742482 0.064325s notice: Listening for intracluster connections on port 29015
+2017-02-12T03:00:46.524580899 0.077163s notice: Listening for client driver connections on port 28015
+2017-02-12T03:00:46.524919398 0.077502s notice: Listening for administrative HTTP connections on port 8081
+2017-02-12T03:00:46.525890017 0.078472s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-12T03:00:46.526644756 0.079227s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-12T03:00:46.527527759 0.080110s notice: Listening on http addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-12T03:00:46.527650988 0.080233s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
+2017-02-12T03:00:47.632142261 1.184725s info: Table 87ac5329-5db8-4f0d-9e19-aa94ebd204c0: Starting a new Raft election for term 2.
+2017-02-12T03:00:47.657419977 1.210002s info: Table 87ac5329-5db8-4f0d-9e19-aa94ebd204c0: This server is Raft leader for term 2. Latest log index is 2.

@@ -1,23 +1,7 @@
-RDD filtered: 
-
-6.75
-13.5
-20.25
-20.25
-20.25
-20.25
-20.25
-13.5
-20.25
-20.25
-20.25
-20.25
-20.25
-13.5
 Traceback (most recent call last):
-  File "/home/ubuntu/Amazon-Go-Recommendation-System-Using-Distributed-Graph-Processing/Spark/Streaming/SparkStreaming.py", line 244, in <module>
-    ssc.awaitTermination()
-  File "/usr/local/spark/python/lib/pyspark.zip/pyspark/streaming/context.py", line 206, in awaitTermination
+  File "/home/ubuntu/PetGo-Analytics/Spark/Streaming/SparkStreaming.py", line 171, in <module>
+    trans = KafkaUtils.createDirectStream(ssc, [topic], kafkaBrokers)
+  File "/usr/local/spark/python/lib/pyspark.zip/pyspark/streaming/kafka.py", line 130, in createDirectStream
   File "/usr/local/spark/python/lib/py4j-0.10.4-src.zip/py4j/java_gateway.py", line 1131, in __call__
   File "/usr/local/spark/python/lib/py4j-0.10.4-src.zip/py4j/java_gateway.py", line 883, in send_command
   File "/usr/local/spark/python/lib/py4j-0.10.4-src.zip/py4j/java_gateway.py", line 1028, in send_command
@@ -25,3 +9,11 @@ Traceback (most recent call last):
     data = self._sock.recv(self._rbufsize)
   File "/usr/local/spark/python/lib/pyspark.zip/pyspark/context.py", line 236, in signal_handler
 KeyboardInterrupt
+Exception in thread Thread-1 (most likely raised during interpreter shutdown):
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/threading.py", line 810, in __bootstrap_inner
+  File "/usr/lib/python2.7/threading.py", line 763, in run
+  File "/usr/lib/python2.7/SocketServer.py", line 241, in serve_forever
+  File "/usr/lib/python2.7/threading.py", line 585, in set
+  File "/usr/lib/python2.7/threading.py", line 406, in notifyAll
+<type 'exceptions.TypeError'>: 'NoneType' object is not callable

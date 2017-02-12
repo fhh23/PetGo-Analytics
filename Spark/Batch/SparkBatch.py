@@ -185,7 +185,7 @@ for f in bucket:
     #put into nice format
     #finalItemSets = finalItemSets.map(lambda (itemset, count): ", ".join([str(x) for x in itemset])+"\t("+str(count)+")")
     print(finalItemSets.collect())#saveAsTextFile("spark_out.txt")
-    #finalItemSets.foreachPartition(rethinkWr)
-conn = r.connect(host='localhost', port=28015, db='test')
-r.table('itemsets')['count'].order_by(index=r.desc('length')).run(conn)
-conn.close()
+    finalItemSets.foreachPartition(rethinkWr)
+#conn = r.connect(host='localhost', port=28015, db='test')
+#r.table('itemsets')['count'].order_by(index=r.desc('length')).run(conn)
+#conn.close()

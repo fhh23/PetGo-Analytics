@@ -21,10 +21,10 @@ def get_s3_bucket(bucket_name):
 		return s3.Bucket(bucket_name)
 
 #cluster = kafka.KafkaClient("35.166.31.140:9092")
-#producer = kafka.KafkaProducer(bootstrap_servers='localhost:9092')
+producer = kafka.KafkaProducer(bootstrap_servers='localhost:9092')
 #producer = kafka.SimpleProducer(cluster)
 
-producer = kafka.KafkaProducer(bootstrap_servers='35.166.31.140:9092')
+#producer = kafka.KafkaProducer(bootstrap_servers='35.166.31.140:9092')
 
 bucket_name = 'fh-data-insight'
 while True:

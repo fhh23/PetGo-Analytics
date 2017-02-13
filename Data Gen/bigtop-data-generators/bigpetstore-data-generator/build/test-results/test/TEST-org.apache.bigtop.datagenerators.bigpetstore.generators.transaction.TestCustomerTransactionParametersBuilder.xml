@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.apache.bigtop.datagenerators.bigpetstore.generators.transaction.TestCustomerTransactionParametersBuilder" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-01-31T05:10:52" hostname="LAPTOP-ATT7P04Q" time="0.0">
-  <properties/>
-  <testcase name="testBuild" classname="org.apache.bigtop.datagenerators.bigpetstore.generators.transaction.TestCustomerTransactionParametersBuilder" time="0.0"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>

@@ -1,5 +1,0 @@
-Manifest-Version: 1.0
-Title: BigPetStore Data Generator
-Version: 1.2.0-SNAPSHOT
-Main-Class: org.apache.bigtop.datagenerators.bigpetstore.cli.Driver
-

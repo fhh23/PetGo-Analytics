@@ -17,8 +17,9 @@ def index(chartID = 'chart_ID', chart_type = 'bar', chart_height = 350):
     print("HI \n", f)
     for key in red.scan_iter():
         count = red.get(key)
-	keys.append(key)
-        counts.append(count)
+	keys.append(int(key))
+        counts.append(int(count))
+        print(zip(keys, counts))
     conn = rdb.connect(host='localhost', port=28015, db='test')
     cursor = rdb.table('itemsets').run(conn)
     mySet = []
@@ -35,12 +36,11 @@ def index(chartID = 'chart_ID', chart_type = 'bar', chart_height = 350):
             myCount.append(x[1])
             
     f.close()
-    keys = [ 23, 23, 23 ]
     chart = {"renderTo": chartID, "type": chart_type, "height": chart_height,}
     series = [{"name": 'Label1', "data": [1,2,3]}, {"name": 'Label2', "data": [4, 5, 6]}]
     title = {"text": 'My Title'}
     xAxis = {"categories": keys}
-    yAxis = {"title": {"text": 'yAxis Label'}}
+    yAxis = {"data": counts}
     xAxis2 = {"categories": mySet}
     yAxis2 = {"data": myCount}
     return render_template('index.html', chartID=chartID, chart=chart, series=series, title=title, xAxis=xAxis, yAxis=yAxis, xAxis2=xAxis2, yAxis2=yAxis2)

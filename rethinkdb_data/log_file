@@ -119,3 +119,17 @@
 2017-02-12T03:00:46.527650988 0.080233s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
 2017-02-12T03:00:47.632142261 1.184725s info: Table 87ac5329-5db8-4f0d-9e19-aa94ebd204c0: Starting a new Raft election for term 2.
 2017-02-12T03:00:47.657419977 1.210002s info: Table 87ac5329-5db8-4f0d-9e19-aa94ebd204c0: This server is Raft leader for term 2. Latest log index is 2.
+2017-02-12T10:12:03.447993053 0.119901s notice: Running rethinkdb 2.3.5~0trusty (GCC 4.8.2)...
+2017-02-12T10:12:03.450122589 0.122029s notice: Running on Linux 3.13.0-48-generic x86_64
+2017-02-12T10:12:03.450150391 0.122055s notice: Loading data from directory /home/ubuntu/PetGo-Analytics/rethinkdb_data
+2017-02-12T10:12:03.501602183 0.173508s info: Automatically using cache size of 907 MB
+2017-02-12T10:12:03.502887148 0.174792s notice: Listening for intracluster connections on port 29015
+2017-02-12T10:12:03.531996514 0.203902s notice: Listening for client driver connections on port 28015
+2017-02-12T10:12:03.532245361 0.204150s notice: Listening for administrative HTTP connections on port 8081
+2017-02-12T10:12:03.541001872 0.212907s notice: Listening on cluster addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-12T10:12:03.541703593 0.213609s notice: Listening on driver addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-12T10:12:03.542340037 0.214245s notice: Listening on http addresses: 127.0.0.1, 172.31.0.173, ::1, fe80::43:56ff:fe10:45f%2
+2017-02-12T10:12:03.542341622 0.214246s notice: Server ready, "ip_172_31_0_173_x6t" 68093ff5-b723-44b1-92b7-b20c32643b45
+2017-02-12T10:12:05.135808411 1.807714s info: Table 87ac5329-5db8-4f0d-9e19-aa94ebd204c0: Starting a new Raft election for term 3.
+2017-02-12T10:12:05.150525242 1.822430s info: Table 87ac5329-5db8-4f0d-9e19-aa94ebd204c0: This server is Raft leader for term 3. Latest log index is 5.
+2017-02-13T02:49:00.362961978 59817.034867s notice: Someone asked for the nonwhitelisted file "/manager/html".  If this should be accessible, add it to the static web assets.

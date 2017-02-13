@@ -141,7 +141,7 @@ def compute_percentile(rdd):
     percentile_limit = rdd.map(lambda row: int(row[1])) \
                           .mapPartitions(digest_partitions) \
                           .reduce(add) \
-                          .percentile(50)
+                          .percentile(75)
     percentile_broadcast = rdd.context.broadcast(percentile_limit)
     print(percentile_limit)
 
@@ -171,7 +171,7 @@ word = lines.map(lineSplit) \
             .map(lambda word: (word, 1)) \
             .reduceByKey(lambda a, b: a+b).cache()
             #.map(lambda x:x[1]) 
-#print_word = word.pprint()
+print_word = word.pprint()
 word.foreachRDD(lambda rdd: rdd.foreach(redisWr))
 print("RDD filtered: \n") 
 word.foreachRDD(compute_percentile)

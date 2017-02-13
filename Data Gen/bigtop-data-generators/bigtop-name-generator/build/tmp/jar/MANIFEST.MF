@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Title: BigTop Name Generator
+Version: 1.2.0-SNAPSHOT
+

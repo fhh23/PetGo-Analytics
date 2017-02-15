@@ -6,21 +6,19 @@ Presentation: https://docs.google.com/presentation/d/1jQSnEANvE965hPYleOkKVTyo-Q
 
 ![PetGo Analytics - Pet lovers like you also bought...](res/pulse.jpg)
 
-## Outline
+## Project Links
 
  * [Slides][slides]
  * [Live Demo][demo]
 
-## Index
+## Outline
 
 1. [Project Overview](README.md#1-introduction)
 2. [The Pipeline](README.md#2-the-pipeline)
- * 2.0 [Avro Schema](README.md#20-avro-schema)
- * 2.1 [Mock Firehose](README.md#21-mock-firehose)
- * 2.2 [Venturi](README.md#22-venturi)
- * 2.3 [Flink Connected Components](README.md#23-flink-connected-components)
+ * 2.1 [Data Generation](README.md#21-data-generation)
+ * 2.2 [Stream Processing and Data Storage](README.md#22-stream-processing-and-data-storage)
+ * 2.3 [Batch Processing and Data Storage](README.md#23-batch-processing-and-data-storage)
  * 2.4 [UI Server](README.md#24-ui-server)
- * 2.5 [RethinkDB Persistence from Flink](README.md#25-rethinkdb-persistence-from-flink)
 3. [Performance](README.md#3-performance)
 4. [Future Work](README.md#4-future-work)
 5. [Deployment](README.md#5-deployment)

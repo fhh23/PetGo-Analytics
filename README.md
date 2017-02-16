@@ -48,7 +48,15 @@ There is both a Batch and Streaming component to the pipeline. Both batch and st
 
 [Source](1.avro-schema)
 
-Data was generated using the Apache BigTop project. Data was generated in the format of one customer transaction per line. Below is an example. INSERT IMAGE. 
+Data was generated using the Apache BigTop project. Data was generated in the format of one customer transaction per line. Below is an example. 
+
+~~~
+1,18.435959704338224,6,33610,0,Khyana Riding,48073,category=dry cat food;brand=Pretty Cat;flavor=Tuna;size=7.0;per_unit_cost=2.86;
+2,36.78793297494155,3,84123,0,Khyana Riding,48073,category=dry cat food;brand=Feisty Feline;flavor=Chicken & Rice (Hairball Management);size=14.0;per_unit_cost=2.14;
+3,73.15212064816562,3,84123,0,Khyana Riding,48073,category=dry cat food;brand=Feisty Feline;flavor=Chicken & Rice (Hairball Management);size=14.0;per_unit_cost=2.14;
+4,87.42629969938072,5,84015,0,Khyana Riding,48073,category=dry dog food;brand=Happy Pup;flavor=Chicken;size=15.0;per_unit_cost=2.67;
+4,87.42629969938072,5,84015,0,Khyana Riding,48073,category=kitty litter;brand=Feisty Feline;size=28.0;per_unit_cost=1.5;
+~~~
 
 After the data was generated, it was uploaded to S3.
 

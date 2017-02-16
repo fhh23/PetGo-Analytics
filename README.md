@@ -1,7 +1,5 @@
 Insight Data Engineering Project
 
-Presentation: https://docs.google.com/presentation/d/1jQSnEANvE965hPYleOkKVTyo-Q_p9SCWP2kmCIj-1wY/edit#slide=id.p
-
 # PetGo Analytics
 
 ![PetGo Analytics - Pet lovers like you also bought...](res/pulse.jpg)
@@ -66,7 +64,13 @@ After the data was generated, it was uploaded to S3.
 
 [Source](2.mock-firehose)
 
-Stream Processing includes Kafka and Spark Streaming. Uses tdigest algorithm. Stores data in Redis.
+This section will cover the tools of the pipeline involved in streaming processing. The streaming component is used to find what the top 10% of items purchased are. First, Kafka is used to ingest the data stored in S3. Rather than reading the data directly from S3, Kafka was used so that the data could be simulated as streaming. Next, Spark Streaming consumes the data in the Kafka topic as a streaming RDD. There are two steps in the Spark Streaming processing:
+
+1. Each record in the incoming data represents one transaction (i.e., one item bought by one customer). The data is transformed into a different format where one record represents an item and the total number of people who purchased that item.
+2. The t-digest algorithm is run on the resulting dstream from step 1 on each node. This algorithm runs in a distributed manner and finds the threshold for an item to belong to the specified quartile (in this case top 10%).
+
+After the processing is finished, all of the items and their counts are stored in Redis as key-value pairs. The threshold value found in step 2 is stored as well.
+
 
 <br clear="all" />
 ### 2.3 Batch Processing and Data Storage
@@ -75,7 +79,10 @@ Stream Processing includes Kafka and Spark Streaming. Uses tdigest algorithm. St
 
 [Source](2.venturi)
 
-Batch processing reads data from S3. SON and Apriori algorithm. Stores data in RethinkDB.
+This section will cover the tools of the pipeline involved in batch processing. The batch component is used to find what the frequent itemsets are. The data is read directly from S3 into Spark. There are several steps in the Spark batch processing:
+
+1. ?
+2. ?
 
 
 <br clear="all" />
@@ -124,7 +131,7 @@ the initial setup.
 
 
 [demo]: http://www.petgoanalytics.us/
-[slides]: goo.gl/FTW14K
+[slides]: http://goo.gl/FTW14K
 [InsightDE]: http://insightdataengineering.com/
 [pegasus]: https://github.com/insightdatascience/pegasus
 [deploy]: DEPLOY.md

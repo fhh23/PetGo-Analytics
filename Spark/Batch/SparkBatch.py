@@ -97,15 +97,6 @@ def frequent_items(items, transactions, min_sup):
             _itemSet.add(item)
     return _itemSet
 
-# helper to standardize the output (not part of the algorithm)
-
-def please_clean(solution):
-    res = []
-    for i in solution.itervalues():
-        for j in i:
-            res.append(j)
-    return res
-
 #======================================================================================================
 
 
@@ -139,12 +130,8 @@ aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY', 'default')
 
 conn = boto.connect_s3(aws_access_key, aws_secret_access_key)
 bucket = conn.get_bucket('fh-data-insight')
-#data = sc.testFile("s3n://fh-data-insight/*")
-#print(data.take(5)
-#conn = r.connect(host='localhost', port=28015, db='test')
-#r.table('itemsets').index_create('length').run(conn)
-#conn.close()
 bucket_path = "s3n://fh-data-insight/"
+
 for f in bucket:
     data = sc.textFile(bucket_path + f.name)
     #print(data.take(5))
@@ -186,6 +173,3 @@ for f in bucket:
     #finalItemSets = finalItemSets.map(lambda (itemset, count): ", ".join([str(x) for x in itemset])+"\t("+str(count)+")")
     print(finalItemSets.collect())#saveAsTextFile("spark_out.txt")
     finalItemSets.foreachPartition(rethinkWr)
-#conn = r.connect(host='localhost', port=28015, db='test')
-#r.table('itemsets')['count'].order_by(index=r.desc('length')).run(conn)
-#conn.close()

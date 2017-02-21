@@ -17,8 +17,6 @@ Pet lovers like you also bought...
  * 2.3 [Batch Processing and Data Storage](README.md#23-batch-processing-and-data-storage)
  * 2.4 [UI Server](README.md#24-ui-server)
 3. [Performance](README.md#3-performance)
-4. [Future Work](README.md#4-future-work)
-5. [Deployment](README.md#5-deployment)
 
 
 
@@ -88,14 +86,9 @@ This section will cover the tools of the pipeline involved in batch processing. 
 
 [Source](Flask)
 
-The UI is built as a tornado web app, with
-visualizations built using Highcharts (javascript). This app is served by a Flask web server that uses
-Ajax calls to push new data
-frames down to the browser clients. The Flask server recieves these
-new data frames via Redis and RehtinkDB, with a
-registered change listener that performs the previously-mentioned
-broadcast. 
-
+The UI is built as a Flask web app, with
+visualizations built using Highcharts (javascript). This app is served by a Tornado web server that uses
+a timeout every 15 seconds to refresh the data. The server recieves new data frames via Redis and RehtinkDB. 
 
 <br clear="all" />
 
@@ -103,30 +96,10 @@ broadcast.
 
 Coming Soon
 
-
-
-## 4. Future Work
-
-<img align="right" src="res/minCut.jpg" />
-
-Coming soon
-
+See the [TESTING][testing] document for results on Spark Streaming algorithm performance.
 
 <br clear="all" />
 
-## 5. Deployment
-
-See the [DEPLOY][deploy] guide (Coming Soon)
-
-Much of the ops work on this project was done using the
-[Pegasus][pegasus] deployment and management tool. If you'd like to
-run your own Network Pulse cluster, the guide above walks you through
-the initial setup.
-
-
-
 [demo]: http://www.petgoanalytics.us/
 [slides]: http://goo.gl/FTW14K
-[InsightDE]: http://insightdataengineering.com/
-[pegasus]: https://github.com/insightdatascience/pegasus
-[deploy]: DEPLOY.md
+[testing]: TESTING.md

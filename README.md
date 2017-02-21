@@ -76,8 +76,11 @@ After the processing is finished, all of the items and their counts are stored i
 
 This section will cover the tools of the pipeline involved in batch processing. The batch component is used to find what the frequent itemsets are. The data is read directly from S3 into Spark. There are several steps in the Spark batch processing:
 
-1. ?
-2. ?
+1. Each record in the incoming data represents one transaction (i.e., one item bought by one customer). The data is transformed into a different format where one record represents ALL items purchased by a single customer.
+2. On each node, the Apriori algorithm is run to find the frequent itemsets on that node.
+3. The SON algorithm is run to find the global frequent itemsets. 
+
+After the processing is finished, the data is stored in RethinkDB. The key is each item, and the value stored with the item is a list of tuples, with each tuple being a set which included the key and the itemset's count.
 
 
 <br clear="all" />
@@ -93,8 +96,6 @@ a timeout every 15 seconds to refresh the data. The server recieves new data fra
 <br clear="all" />
 
 ## 3. Performance
-
-Coming Soon
 
 See the [TESTING][testing] document for results on Spark Streaming algorithm performance.
 

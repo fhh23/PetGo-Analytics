@@ -35,8 +35,6 @@ There are two main use cases for these features. First, it offers customers a be
 
 ## 2. The Pipeline
 
-There is both a Batch and Streaming component to the pipeline. Both batch and streaming use the same data stored in S3. Kafka is used to simulate streaming data. Spark is used for both the batch and streaming processing. The results of the streaming processing are stored in Redis, and the results 
-
 ### 2.1 Data Generation
 
 [Source](DataGeneration)

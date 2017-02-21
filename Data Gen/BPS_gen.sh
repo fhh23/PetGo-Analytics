@@ -1,1 +1,0 @@
-java -jar bigpetstore-data-generator-0.2.1 . 5 5 10000 123

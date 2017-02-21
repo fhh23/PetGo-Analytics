@@ -1,4 +1,0 @@
-reset: false
-packages:
-  - amulet
-  - python3-yaml

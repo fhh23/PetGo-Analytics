@@ -57,7 +57,7 @@ After the data was generated, it was uploaded to S3.
 
 ### 2.2 Stream Processing and Data Storage
 
-<img align="left" src="pics/stream_pipeline.jpg" />
+<img align="left" src="pics/stream_pipeline.JPG" />
 
 [Source](Spark/Batch)
 
@@ -72,7 +72,7 @@ After the processing is finished, all of the items and their counts are stored i
 <br clear="all" />
 ### 2.3 Batch Processing and Data Storage
 
-<img align="right" src="pics/batch_pipeline.jpg" />
+<img align="right" src="pics/batch_pipeline.JPG" />
 
 [Source](Spark/Batch)
 

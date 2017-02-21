@@ -1,8 +1,7 @@
 Insight Data Engineering Project
 
 # PetGo Analytics
-
-![PetGo Analytics - Pet lovers like you also bought...](res/pulse.jpg)
+Pet lovers like you also bought...
 
 ## Project Links
 
@@ -38,13 +37,11 @@ There are two main use cases for these features. First, it offers customers a be
 
 ## 2. The Pipeline
 
-![PetGo Analytics Pipeline](res/pipeline.jpg)
-
 There is both a Batch and Streaming component to the pipeline. Both batch and streaming use the same data stored in S3. Kafka is used to simulate streaming data. Spark is used for both the batch and streaming processing. The results of the streaming processing are stored in Redis, and the results 
 
 ### 2.1 Data Generation
 
-[Source](1.avro-schema)
+[Source](DataGeneration)
 
 Data was generated using the Apache BigTop project. Data was generated in the format of one customer transaction per line. Below is an example. 
 
@@ -60,9 +57,9 @@ After the data was generated, it was uploaded to S3.
 
 ### 2.2 Stream Processing and Data Storage
 
-<img align="left" src="res/mock_firehose.jpg" />
+<img align="left" src="pics/stream_pipeline.jpg" />
 
-[Source](2.mock-firehose)
+[Source](Spark/Batch)
 
 This section will cover the tools of the pipeline involved in streaming processing. The streaming component is used to find what the top 10% of items purchased are. First, Kafka is used to ingest the data stored in S3. Rather than reading the data directly from S3, Kafka was used so that the data could be simulated as streaming. Next, Spark Streaming consumes the data in the Kafka topic as a streaming RDD. There are two steps in the Spark Streaming processing:
 
@@ -75,9 +72,9 @@ After the processing is finished, all of the items and their counts are stored i
 <br clear="all" />
 ### 2.3 Batch Processing and Data Storage
 
-<img align="right" src="res/venturi.jpg" />
+<img align="right" src="pics/batch_pipeline.jpg" />
 
-[Source](2.venturi)
+[Source](Spark/Batch)
 
 This section will cover the tools of the pipeline involved in batch processing. The batch component is used to find what the frequent itemsets are. The data is read directly from S3 into Spark. There are several steps in the Spark batch processing:
 
@@ -89,9 +86,7 @@ This section will cover the tools of the pipeline involved in batch processing. 
 
 ### 2.4 UI Server
 
-<img align="right" src="res/uiserver.jpg" />
-
-[Source](4.ui-server)
+[Source](Flask)
 
 The UI is built as a tornado web app, with
 visualizations built using Highcharts (javascript). This app is served by a Flask web server that uses

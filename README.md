@@ -32,7 +32,6 @@ You can imagine that Amazon would want to have the same features that make their
 There are two main use cases for these features. First, it offers customers a better shopping experience, as they can learn what items are most popular and can get recommendations about items they may have not known about. Second, it allows the business to offer deals and recommendations to customers while they are shopping based on what is currently in their cart.
 
 
-
 ## 2. The Pipeline
 
 ### 2.1 Data Generation
@@ -64,8 +63,6 @@ This section will cover the tools of the pipeline involved in streaming processi
 
 After the processing is finished, all of the items and their counts are stored in Redis as key-value pairs. The threshold value found in step 2 is stored as well.
 
-
-<br clear="all" />
 ### 2.3 Batch Processing and Data Storage
 
 <img align="right" src="pics/batch_pipeline.JPG" />
@@ -80,9 +77,6 @@ This section will cover the tools of the pipeline involved in batch processing. 
 
 After the processing is finished, the data is stored in RethinkDB. The key is each item, and the value stored with the item is a list of tuples, with each tuple being a set which included the key and the itemset's count.
 
-
-<br clear="all" />
-
 ### 2.4 UI Server
 
 [Source](Flask)
@@ -91,13 +85,9 @@ The UI is built as a Flask web app, with
 visualizations built using Highcharts (javascript). This app is served by a Tornado web server that uses
 a timeout every 15 seconds to refresh the data. The server recieves new data frames via Redis and RehtinkDB. 
 
-<br clear="all" />
-
 ## 3. Performance
 
 See the [TESTING][testing] document for results on Spark Streaming algorithm performance.
-
-<br clear="all" />
 
 [demo]: http://www.petgoanalytics.us/
 [slides]: http://goo.gl/FTW14K

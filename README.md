@@ -6,7 +6,8 @@ Pet lovers like you also bought...
 ## Project Links
 
  * [Slides][slides]
- * [Live Demo][demo]
+ * [Website][demo]
+ * [Demo Video] [demovid]
 
 ## Outline
 
@@ -91,4 +92,5 @@ See the [TESTING][testing] document for results on Spark Streaming algorithm per
 
 [demo]: http://www.petgoanalytics.us/
 [slides]: http://goo.gl/FTW14K
+[demovid]: https://youtu.be/k3s64Hoa6e0
 [testing]: TESTING.md

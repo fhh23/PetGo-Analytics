@@ -6,7 +6,8 @@ Pet lovers like you also bought...
 ## Project Links
 
  * [Slides][slides]
- * [Live Demo][demo]
+ * [Website][demo]
+ * [Demo Video] [demovid]
 
 ## Outline
 
@@ -17,8 +18,6 @@ Pet lovers like you also bought...
  * 2.3 [Batch Processing and Data Storage](README.md#23-batch-processing-and-data-storage)
  * 2.4 [UI Server](README.md#24-ui-server)
 3. [Performance](README.md#3-performance)
-4. [Future Work](README.md#4-future-work)
-5. [Deployment](README.md#5-deployment)
 
 
 
@@ -34,10 +33,7 @@ You can imagine that Amazon would want to have the same features that make their
 There are two main use cases for these features. First, it offers customers a better shopping experience, as they can learn what items are most popular and can get recommendations about items they may have not known about. Second, it allows the business to offer deals and recommendations to customers while they are shopping based on what is currently in their cart.
 
 
-
 ## 2. The Pipeline
-
-There is both a Batch and Streaming component to the pipeline. Both batch and streaming use the same data stored in S3. Kafka is used to simulate streaming data. Spark is used for both the batch and streaming processing. The results of the streaming processing are stored in Redis, and the results 
 
 ### 2.1 Data Generation
 
@@ -68,8 +64,6 @@ This section will cover the tools of the pipeline involved in streaming processi
 
 After the processing is finished, all of the items and their counts are stored in Redis as key-value pairs. The threshold value found in step 2 is stored as well.
 
-
-<br clear="all" />
 ### 2.3 Batch Processing and Data Storage
 
 <img align="right" src="pics/batch_pipeline.JPG" />
@@ -78,55 +72,25 @@ After the processing is finished, all of the items and their counts are stored i
 
 This section will cover the tools of the pipeline involved in batch processing. The batch component is used to find what the frequent itemsets are. The data is read directly from S3 into Spark. There are several steps in the Spark batch processing:
 
-1. ?
-2. ?
+1. Each record in the incoming data represents one transaction (i.e., one item bought by one customer). The data is transformed into a different format where one record represents ALL items purchased by a single customer.
+2. On each node, the Apriori algorithm is run to find the frequent itemsets on that node.
+3. The SON algorithm is run to find the global frequent itemsets. 
 
-
-<br clear="all" />
+After the processing is finished, the data is stored in RethinkDB. The key is each item, and the value stored with the item is a list of tuples, with each tuple being a set which included the key and the itemset's count.
 
 ### 2.4 UI Server
 
 [Source](Flask)
 
-The UI is built as a tornado web app, with
-visualizations built using Highcharts (javascript). This app is served by a Flask web server that uses
-Ajax calls to push new data
-frames down to the browser clients. The Flask server recieves these
-new data frames via Redis and RehtinkDB, with a
-registered change listener that performs the previously-mentioned
-broadcast. 
-
-
-<br clear="all" />
+The UI is built as a Flask web app, with
+visualizations built using Highcharts (javascript). This app is served by a Tornado web server that uses
+a timeout every 15 seconds to refresh the data. The server recieves new data frames via Redis and RehtinkDB. 
 
 ## 3. Performance
 
-Coming Soon
-
-
-
-## 4. Future Work
-
-<img align="right" src="res/minCut.jpg" />
-
-Coming soon
-
-
-<br clear="all" />
-
-## 5. Deployment
-
-See the [DEPLOY][deploy] guide (Coming Soon)
-
-Much of the ops work on this project was done using the
-[Pegasus][pegasus] deployment and management tool. If you'd like to
-run your own Network Pulse cluster, the guide above walks you through
-the initial setup.
-
-
+See the [TESTING][testing] document for results on Spark Streaming algorithm performance.
 
 [demo]: http://www.petgoanalytics.us/
 [slides]: http://goo.gl/FTW14K
-[InsightDE]: http://insightdataengineering.com/
-[pegasus]: https://github.com/insightdatascience/pegasus
-[deploy]: DEPLOY.md
+[demovid]: https://youtu.be/k3s64Hoa6e0
+[testing]: TESTING.md
